@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+        <name>FLINK</name>
+        <displayName>FLINK</displayName>
+        <comment>Apache Flink</comment>
+        <version>1.10.1</version>
+
+        <quickLinksConfigurations>
+            <quickLinksConfiguration>
+                <fileName>quicklinks.json</fileName>
+                <default>true</default>
+            </quickLinksConfiguration>
+        </quickLinksConfigurations>
+
+
+        <components>
+
+            <component>
+                <name>FLINK_HISTORYSERVER</name>
+                <displayName>Flink History Server</displayName>
+                <category>MASTER</category>
+                <cardinality>1</cardinality>
+                <versionAdvertised>true</versionAdvertised>
+
+                <commandScript>
+                    <script>scripts/flink_historyserver.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>1200</timeout>
+                </commandScript>
+            </component>
+
+            <component>
+                <name>FLINK_CLIENT</name>
+                <displayName>FLink Client</displayName>
+                <category>CLIENT</category>
+                <cardinality>0+</cardinality>
+                <versionAdvertised>true</versionAdvertised>
+                <commandScript>
+                    <script>scripts/flink_client.py</script>
+                    <scriptType>PYTHON</scriptType>
+                    <timeout>1200</timeout>
+                </commandScript>
+            </component>
+      </components>
+
+      <requiredServices>
+        <service>YARN</service>
+      </requiredServices>
+
+      <configuration-dependencies>
+        <config-type>flink-env.xml</config-type>
+        <config-type>flink-conf.xml</config-type>
+      </configuration-dependencies>
+    </service>
+  </services>
+</metainfo>

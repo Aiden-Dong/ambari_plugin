@@ -1,0 +1,59 @@
+{
+  "AZKABAN": {
+    "service": [],
+    "AZKABAN_WEB": [
+      {
+        "name": "AZKABAN_WEBSERVER_PROCESS",
+        "label": "Azkaban Web Server",
+        "description": "Check azkaban server process survival",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "PORT",
+          "uri": "{{azkaban-web.properties/jetty.port}}",
+          "default_port": 8080,
+          "reporting": {
+            "ok": {
+              "text": "TCP OK - {0:.3f}s response on port {1}"
+            },
+            "warning": {
+              "text": "TCP OK - {0:.3f}s response on port {1}",
+              "value": 1.5
+            },
+            "critical": {
+              "text": "Connection failed: {0} to {1}:{2}",
+              "value": 5
+            }
+          }
+        }
+      }
+    ],
+    "AZKABAN_EXECUTOR": [
+      {
+        "name": "AZKABAN_EXECUTORERVER_PROCESS",
+        "label": "Azkaban Executor Server",
+        "description": "Check azkaban server process survival",
+        "interval": 1,
+        "scope": "ANY",
+        "source": {
+          "type": "PORT",
+          "uri": "{{azkaban-executor.properties/executor.port}}",
+          "default_port": 12321,
+          "reporting": {
+            "ok": {
+              "text": "TCP OK - {0:.3f}s response on port {1}"
+            },
+            "warning": {
+              "text": "TCP OK - {0:.3f}s response on port {1}",
+              "value": 1.5
+            },
+            "critical": {
+              "text": "Connection failed: {0} to {1}:{2}",
+              "value": 5
+            }
+          }
+        }
+      }
+    ]
+  }
+}

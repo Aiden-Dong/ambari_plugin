@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+# -*- coding: utf-8 -*-
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+-->
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>content</name>
+        <display-name>log4j.properties template</display-name>
+        <description>Custom log4j.properties</description>
+        <value>
+            log4j.logger.azkaban=INFO,Server
+            log4j.logger.azkaban.webapp.servlet.AbstractAzkabanServlet=INFO, R
+            log4j.logger.azkaban.webapp.servlet.LoginAbstractAzkabanServlet=INFO, R
+            log4j.logger.azkaban.auth=INFO, R
+            log4j.logger.azkaban.executor=DEBUG,SelectServer
+            log4j.logger.azkaban.execapp=DEBUG,WorkListener
+            log4j.logger.azkaban.trigger.TriggerManager=DEBUG,TriggerListener
+            log4j.logger.azkaban.trigger.builtin.ExecuteFlowAction=DEBUG,TriggerListener
+            log4j.logger.azkaban.utils=INFO,Utils
+            
+            log4j.appender.R=org.apache.log4j.RollingFileAppender
+            log4j.appender.R.layout=org.apache.log4j.PatternLayout
+            log4j.appender.R.File=${azkaban.log.home}/azkaban-access.log
+            log4j.appender.R.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%l] %m%n
+            log4j.appender.R.MaxFileSize=100MB
+            log4j.appender.R.MaxBackupIndex=10
+            
+            log4j.appender.Server=org.apache.log4j.RollingFileAppender
+            log4j.appender.Server.layout=org.apache.log4j.PatternLayout
+            log4j.appender.Server.File=${azkaban.log.home}/azkaban-server.log
+            log4j.appender.Server.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%l] %m%n
+            log4j.appender.Server.MaxFileSize=100MB
+            log4j.appender.Server.MaxBackupIndex=10
+            
+            log4j.appender.WorkListener=org.apache.log4j.RollingFileAppender
+            log4j.appender.WorkListener.layout=org.apache.log4j.PatternLayout
+            log4j.appender.WorkListener.File=${azkaban.log.home}/azkaban-workflow.log
+            log4j.appender.WorkListener.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%t] [%c{1}] [Azkaban] [%l] %m%n
+            log4j.appender.WorkListener.MaxFileSize=100MB
+            log4j.appender.WorkListener.MaxBackupIndex=10
+            
+            log4j.appender.SelectServer=org.apache.log4j.RollingFileAppender
+            log4j.appender.SelectServer.layout=org.apache.log4j.PatternLayout
+            log4j.appender.SelectServer.File=${azkaban.log.home}/azkaban-selectserver.log
+            log4j.appender.SelectServer.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%l] %m%n
+            log4j.appender.SelectServer.MaxFileSize=10MB
+            log4j.appender.SelectServer.MaxBackupIndex=10
+            
+            log4j.appender.TriggerListener=org.apache.log4j.RollingFileAppender
+            log4j.appender.TriggerListener.layout=org.apache.log4j.PatternLayout
+            log4j.appender.TriggerListener.File=${azkaban.log.home}/azkaban-triggerListener.log
+            log4j.appender.TriggerListener.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%l] %m%n
+            log4j.appender.TriggerListener.MaxFileSize=10MB
+            log4j.appender.TriggerListener.MaxBackupIndex=10
+            
+            log4j.appender.Utils=org.apache.log4j.RollingFileAppender
+            log4j.appender.Utils.layout=org.apache.log4j.PatternLayout
+            log4j.appender.Utils.File=${azkaban.log.home}/azkaban-utils.log
+            log4j.appender.Utils.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%l] %m%n
+            log4j.appender.Utils.MaxFileSize=10MB
+            log4j.appender.Utils.MaxBackupIndex=10
+            
+            
+            log4j.appender.Console=org.apache.log4j.ConsoleAppender
+            log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+            log4j.appender.Console.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS Z} %p [%l] %m%n
+        </value>
+        <value-attributes>
+            <type>content</type>
+            <show-property-name>false</show-property-name>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+</configuration>

@@ -1,0 +1,24 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol": {
+      "type": "HTTP_ONLY"
+    },
+    "links": [
+      {
+        "name": "flink historyserver",
+        "label": "Flink History Server",
+        "component_name": "FLINK_HISTORYSERVER",
+        "requires_user_name": "false",
+        "url": "%@://%@:%@",
+        "port": {
+          "http_property": "historyserver.web.port",
+          "regex": "^(\\d+)$",
+          "site": "flink-conf"
+        }
+      }
+    ]
+  }
+}
+

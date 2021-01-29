@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>jobmanager.heap.size</name>
+        <value>2048m</value>
+        <description>jobmanager jvm heap memory size</description>
+    </property>
+
+    <property>
+        <name>taskmanager.heap.size</name>
+        <value>2048m</value>
+        <description>taskmanager jvm heap memory size</description>
+    </property>
+
+
+    <property>
+        <name>taskmanager.numberOfTaskSlots</name>
+        <value>1</value>
+        <description>taskmanager work core</description>
+    </property>
+
+    <property>
+        <name>parallelism.default</name>
+        <value>2</value>
+        <description>default parallelism of operator</description>
+    </property>
+
+    <property>
+        <name>state.backend</name>
+        <value>filesystem</value>
+        <description>checkpoint file system</description>
+    </property>
+
+    <property>
+        <name>state.checkpoints.dir</name>
+        <value>hdfs:///flink/flink-checkpoints</value>
+        <description>checkpoint path</description>
+    </property>
+
+    <property>
+        <name>state.savepoints.dir</name>
+        <value>hdfs:///flink/flink-checkpoints</value>
+        <description>savepoint path</description>
+    </property>
+
+    <property>
+        <name>historyserver.web.address</name>
+        <value>{{flink_history_server_host}}</value>
+        <description>flink historical server host</description>
+    </property>
+
+    <property>
+        <name>historyserver.web.port</name>
+        <value>8082</value>
+        <description>flink historical server port</description>
+    </property>
+
+    <property>
+        <name>jobmanager.archive.fs.dir</name>
+        <value>hdfs:///flink/flink-job-log</value>
+        <description>flink job log path</description>
+    </property>
+
+    <property>
+        <name>historyserver.archive.fs.dir</name>
+        <value>hdfs:///flink/flink-job-log</value>
+        <description>flink historical server log path</description>
+    </property>
+
+
+    <property>
+        <name>historyserver.archive.fs.refresh-interval</name>
+        <value>10000</value>
+        <description>historical server refresh log interval</description>
+    </property>
+
+</configuration>
